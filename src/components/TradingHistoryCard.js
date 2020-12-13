@@ -1,67 +1,8 @@
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
+import HorChart from "./HorChart";
+import VerChart from "./VerChart";
 import "../styles/TradingCard.css";
-import { useEffect, useState } from "react";
-
-function am4themesTradingTheme(target) {
-  if (target instanceof am4core.ColorSet) {
-    target.list = [
-      am4core.color("#9ac802"),
-      am4core.color("#9ac802"),
-      am4core.color("#9ac802"),
-    ];
-  }
-}
 
 export default function TradingHistoryList({ data }) {
-  const [history] = useState(data);
-  am4core.useTheme(am4themesTradingTheme);
-
-  useEffect(() => {
-    var chart = am4core.create(`chart-${history.id}`, am4charts.XYChart);
-
-    var data = [];
-    var value = 50;
-    for (var i = 0; i < 30; i++) {
-      var date = new Date();
-      date.setHours(0, 0, 0, 0);
-      date.setDate(i);
-      value = Math.round(Math.random() * (100 - 1 + 1) + 1);
-      data.push({ date: date, value: value });
-    }
-
-    chart.data = data;
-
-    let gradient = new am4core.LinearGradient();
-    gradient.addColor(am4core.color("red"));
-    gradient.addColor(am4core.color("blue"));
-
-    // Create axes
-    var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-    dateAxis.renderer.minGridDistance = 150;
-    dateAxis.renderer.labels.template.disabled = true;
-    dateAxis.renderer.opposite = true;
-
-    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.renderer.labels.template.disabled = true;
-    valueAxis.renderer.inversed = true;
-    valueAxis.renderer.grid.template.location = 0;
-    // valueAxis.background.fill = gradient;
-
-    // Create series
-    var series = chart.series.push(new am4charts.LineSeries());
-    series.dataFields.valueY = "value";
-    series.dataFields.dateX = "date";
-    series.tooltipText = "{value}";
-
-    series.tooltip.pointerOrientation = "vertical";
-
-    chart.cursor = new am4charts.XYCursor();
-    chart.cursor.snapToSeries = series;
-    chart.cursor.xAxis = dateAxis;
-    chart.logo.disabled = true;
-  });
-
   return (
     <div className="card">
       <div className="flex items-center justify-between">
@@ -75,14 +16,14 @@ export default function TradingHistoryList({ data }) {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M10.9413 5.19689L9 1.1121L7.0587 5.19689C6.79175 5.75859 6.2788 6.14821 5.68533 6.24006L1.36947 6.908L4.48553 10.1005C4.91403 10.5395 5.10995 11.1699 5.01012 11.7884L4.28407 16.286L8.15121 14.1742C8.68298 13.8838 9.31701 13.8838 9.84879 14.1742L13.7159 16.286L12.9899 11.7884C12.89 11.1699 13.086 10.5395 13.5145 10.1005L16.6305 6.908L12.3147 6.24006C11.7212 6.14821 11.2083 5.75859 10.9413 5.19689ZM9.82092 0.685678C9.48386 -0.0235422 8.51613 -0.0235423 8.17908 0.685678L6.23777 4.77047C6.1043 5.05132 5.84783 5.24613 5.55109 5.29205L1.23523 5.95999C0.485895 6.07597 0.18685 7.03817 0.727876 7.59246L3.84394 10.7849C4.05819 11.0044 4.15615 11.3196 4.10623 11.6289L3.38019 16.1265C3.25413 16.9074 4.03704 17.502 4.70847 17.1354L8.5756 15.0237C8.84149 14.8785 9.15851 14.8785 9.42439 15.0237L13.2915 17.1354C13.963 17.502 14.7459 16.9074 14.6198 16.1265L13.8938 11.6289C13.8438 11.3196 13.9418 11.0044 14.1561 10.7849L17.2721 7.59246C17.8131 7.03817 17.5141 6.07597 16.7648 5.95999L12.4489 5.29205C12.1522 5.24613 11.8957 5.05132 11.7622 4.77047L9.82092 0.685678Z"
               fill="#9AC802"
             />
           </svg>
           <div className="ml-3 -mt-1">
-            <p className="text-2xl font-semibold mt-0">{data.name}</p>
+            <p className="text-xl font-semibold mt-0">{data.name}</p>
             <p className="text-sm text-gray-500">{data.currency}</p>
           </div>
         </div>
@@ -113,12 +54,14 @@ export default function TradingHistoryList({ data }) {
                 fill="#9AC802"
               />
             </svg>
-            <p>2,2x</p>
+            <p className="ml-4">2,2x</p>
           </div>
           <p className="text-gray-500 text-sm">{data.outcome}</p>
         </div>
         {/* line chart */}
-        <div id={`chart-${data.id}`} className="chart"></div>
+        <HorChart color={data.color} />
+        {/* rotated line chart */}
+        <VerChart />
         {/* total */}
         <div>
           <p className="text-2xl font-semibold">$ {data.total}</p>

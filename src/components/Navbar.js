@@ -10,7 +10,7 @@ export default function Navbar() {
   const [mode, setMode] = useState("training");
 
   return (
-    <nav className="navbar px-8 py-3">
+    <nav className="navbar px-8 py-4">
       <div className="flex justify-between">
         {/* logo */}
         <div className="flex items-center justify-center">
