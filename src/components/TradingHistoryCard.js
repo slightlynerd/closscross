@@ -23,7 +23,7 @@ export default function TradingHistoryList({ data }) {
             />
           </svg>
           <div className="ml-3 -mt-1">
-            <p className="text-xl font-semibold mt-0">{data.name}</p>
+            <p className="text-lg font-semibold mt-0">{data.name}</p>
             <p className="text-sm text-gray-500">{data.currency}</p>
           </div>
         </div>
@@ -56,7 +56,7 @@ export default function TradingHistoryList({ data }) {
             </svg>
             <p className="ml-4">2,2x</p>
           </div>
-          <p className="text-gray-500 text-sm">{data.outcome}</p>
+          <p className="text-gray-500 text-xs">{data.outcome}</p>
         </div>
         {/* line chart */}
         <HorChart />
@@ -64,8 +64,8 @@ export default function TradingHistoryList({ data }) {
         <VerChart />
         {/* total */}
         <div>
-          <p className="text-2xl font-semibold">$ {data.total}</p>
-          <p className="font-semibold text-sm text-gray-500">
+          <p className="text-lg font-semibold">$ {data.total}</p>
+          <p className="font-semibold text-xs text-gray-500">
             Total commitment funds
           </p>
         </div>

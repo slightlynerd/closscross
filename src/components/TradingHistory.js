@@ -85,11 +85,11 @@ export default function TradingHistory() {
       <div className="flex mt-6">
         <div>
           <p className="text-gray-500 text-xs">Total trades</p>
-          <p className="text-2xl font-semibold">245</p>
+          <p className="text-lg font-semibold">245</p>
         </div>
         <div className="ml-12">
           <p className="text-gray-500 text-xs">Profit</p>
-          <p className="text-2xl font-semibold">+21.5%</p>
+          <p className="text-lg font-semibold">+21.5%</p>
         </div>
       </div>
       <HorChart color="#9AC802" />

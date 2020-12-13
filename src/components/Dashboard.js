@@ -46,7 +46,7 @@ export default function Dashboard() {
             </div>
             <div>
               <span className="text-sm text-gray-500 mr-2">Sort by:</span>
-              <select className="sort">
+              <select className="sort text-xs">
                 <option>Trending</option>
               </select>
             </div>

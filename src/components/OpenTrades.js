@@ -37,11 +37,11 @@ export default function OpenTrades() {
       <div className="flex mt-6">
         <div>
           <p className="text-gray-500 text-xs">Trades in progress</p>
-          <p className="text-2xl font-semibold">15</p>
+          <p className="text-lg font-semibold">15</p>
         </div>
         <div className="ml-5">
           <p className="text-gray-500 text-xs">Closest outcome</p>
-          <p className="text-xl font-semibold">
+          <p className="text-lg font-semibold">
             25m 40s <br />
             ETH 48 hour
           </p>

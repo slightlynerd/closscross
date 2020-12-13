@@ -51,18 +51,18 @@ export default function TrainingWallet() {
         <div className="flex items-end justify-between">
           <div>
             <p className="text-gray-500 text-xs">Trading</p>
-            <p className="text-2xl font-semibold">$ 34,752.00</p>
+            <p className="text-lg font-semibold">$ 34,752.00</p>
           </div>
-          <button className="btn-outline--accent text-sm text-black px-3 py-1 rounded-sm uppercase">
+          <button className="btn-outline--accent text-xs text-black px-3 py-1 rounded-sm uppercase">
             Top up
           </button>
         </div>
         <div className="flex items-end justify-between mt-4">
           <div>
             <p className="text-gray-500 text-xs">Holding</p>
-            <p className="text-2xl font-semibold">$ 4,102.00</p>
+            <p className="text-lg font-semibold">$ 4,102.00</p>
           </div>
-          <button className="bg-accent text-black text-sm px-3 py-1 rounded-sm uppercase">
+          <button className="bg-accent text-black text-xs px-3 py-1 rounded-sm uppercase">
             Buy Dai
           </button>
         </div>

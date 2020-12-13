@@ -3,7 +3,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 
 export default function HorChart() {
-  const date = Date.now();
+  const date = `hor-${Date.now()}`;
   console.log(date);
 
   const am4themesTradingTheme = (target) => {
