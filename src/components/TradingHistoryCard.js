@@ -1,9 +1,71 @@
+import * as am4core from "@amcharts/amcharts4/core";
+import * as am4charts from "@amcharts/amcharts4/charts";
 import "../styles/TradingCard.css";
+import { useEffect, useState } from "react";
+
+function am4themesTradingTheme(target) {
+  if (target instanceof am4core.ColorSet) {
+    target.list = [
+      am4core.color("#9ac802"),
+      am4core.color("#9ac802"),
+      am4core.color("#9ac802"),
+    ];
+  }
+}
 
 export default function TradingHistoryList({ data }) {
+  const [history] = useState(data);
+  am4core.useTheme(am4themesTradingTheme);
+
+  useEffect(() => {
+    var chart = am4core.create(`chart-${history.id}`, am4charts.XYChart);
+
+    var data = [];
+    var value = 50;
+    for (var i = 0; i < 30; i++) {
+      var date = new Date();
+      date.setHours(0, 0, 0, 0);
+      date.setDate(i);
+      value = Math.round(Math.random() * (100 - 1 + 1) + 1);
+      data.push({ date: date, value: value });
+    }
+
+    chart.data = data;
+
+    let gradient = new am4core.LinearGradient();
+    gradient.addColor(am4core.color("red"));
+    gradient.addColor(am4core.color("blue"));
+
+    // Create axes
+    var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+    dateAxis.renderer.minGridDistance = 150;
+    dateAxis.renderer.labels.template.disabled = true;
+    dateAxis.renderer.opposite = true;
+
+    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    valueAxis.renderer.labels.template.disabled = true;
+    valueAxis.renderer.inversed = true;
+    valueAxis.renderer.grid.template.location = 0;
+    // valueAxis.background.fill = gradient;
+
+    // Create series
+    var series = chart.series.push(new am4charts.LineSeries());
+    series.dataFields.valueY = "value";
+    series.dataFields.dateX = "date";
+    series.tooltipText = "{value}";
+
+    series.tooltip.pointerOrientation = "vertical";
+
+    chart.cursor = new am4charts.XYCursor();
+    chart.cursor.snapToSeries = series;
+    chart.cursor.xAxis = dateAxis;
+    chart.logo.disabled = true;
+  });
+
   return (
     <div className="card">
-      <div className="flex justify-between">
+      <div className="flex items-center justify-between">
+        {/* name */}
         <div className="flex items-start">
           <svg
             width="18"
@@ -24,8 +86,9 @@ export default function TradingHistoryList({ data }) {
             <p className="text-sm text-gray-500">{data.currency}</p>
           </div>
         </div>
-        <div className="border-l-2 border-dotted border-gray-500">
-          <div className="flex ml-4">
+        {/* outcome */}
+        <div className="border-l-2 border-dotted border-gray-500 px-6">
+          <div className="flex">
             <svg
               width="24"
               height="16"
@@ -54,6 +117,9 @@ export default function TradingHistoryList({ data }) {
           </div>
           <p className="text-gray-500 text-sm">{data.outcome}</p>
         </div>
+        {/* line chart */}
+        <div id={`chart-${data.id}`} className="chart"></div>
+        {/* total */}
         <div>
           <p className="text-2xl font-semibold">$ {data.total}</p>
           <p className="font-semibold text-sm text-gray-500">

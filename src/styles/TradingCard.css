@@ -6,3 +6,7 @@
   border: 1px solid;
   border-image-source: linear-gradient(154.79deg, #535763 0%, rgba(80, 83, 95, 0.09) 58.33%, #585C6B 100%);
 }
+
+.chart {
+  height: 60px;
+}

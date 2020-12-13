@@ -23,10 +23,10 @@ export default function Dashboard() {
           <div className="flex">
             <div className="flex mr-5">
               <span className="text-sm text-gray-500 mr-2">Units:</span>
-              <div className="border-gray-500 text-xs rounded-sm">
+              <div className="flex btn-outline--accent text-xs rounded-sm">
                 <button
                   className={cn({
-                    "bg-accent text-black rounded-sm": unit === "percent",
+                    "bg-accent text-black": unit === "percent",
                     "px-2": true,
                   })}
                   onClick={() => setUnit("percent")}
@@ -35,7 +35,7 @@ export default function Dashboard() {
                 </button>
                 <button
                   className={cn({
-                    "bg-accent text-black rounded-sm": unit === "currency",
+                    "bg-accent text-black": unit === "currency",
                     "px-2": true,
                   })}
                   onClick={() => setUnit("currency")}
@@ -46,7 +46,7 @@ export default function Dashboard() {
             </div>
             <div>
               <span className="text-sm text-gray-500 mr-2">Sort by:</span>
-              <select>
+              <select className="sort">
                 <option>Trending</option>
               </select>
             </div>

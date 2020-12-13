@@ -1,6 +1,6 @@
 export default function TrainingWallet() {
   return (
-    <div className="p-8">
+    <div className="px-8 py-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <svg

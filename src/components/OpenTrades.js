@@ -41,7 +41,7 @@ export default function OpenTrades() {
         </div>
         <div className="ml-5">
           <p className="text-gray-500 text-xs">Closest outcome</p>
-          <p className="text-2xl font-semibold">
+          <p className="text-xl font-semibold">
             25m 40s <br />
             ETH 48 hour
           </p>
