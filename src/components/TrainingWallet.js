@@ -53,7 +53,7 @@ export default function TrainingWallet() {
             <p className="text-gray-500 text-xs">Trading</p>
             <p className="text-2xl font-semibold">$ 34,752.00</p>
           </div>
-          <button className="btn-outline--accent text-black px-3 py-1 rounded-sm uppercase">
+          <button className="btn-outline--accent text-sm text-black px-3 py-1 rounded-sm uppercase">
             Top up
           </button>
         </div>
@@ -62,7 +62,7 @@ export default function TrainingWallet() {
             <p className="text-gray-500 text-xs">Holding</p>
             <p className="text-2xl font-semibold">$ 4,102.00</p>
           </div>
-          <button className="bg-accent text-black px-3 py-1 rounded-sm uppercase">
+          <button className="bg-accent text-black text-sm px-3 py-1 rounded-sm uppercase">
             Buy Dai
           </button>
         </div>

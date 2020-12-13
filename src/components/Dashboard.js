@@ -1,24 +1,59 @@
 import { useState } from "react";
+import cn from "classnames";
 import TradingHistoryList from "./TradingHistoryList";
 import tradingHistory from "../data/tradingHistory";
+import "../styles/Dashboard.css";
 
 export default function Dashboard() {
   const [history] = useState(tradingHistory);
+  const [unit, setUnit] = useState("currency");
 
   return (
-    <main>
-      <div className="flex">
-        <div>
-          <p>Select assets, types and period</p>
-          <button>Filter</button>
+    <main className="dashboard pt-8">
+      <div className="container">
+        <div className="flex justify-between">
+          <div className="flex">
+            <p className="text-gray-500 text-sm mr-4">
+              Select assets, types and period:
+            </p>
+            <button className="btn-outline--accent uppercase rounded-sm text-xs px-3">
+              Filter
+            </button>
+          </div>
+          <div className="flex">
+            <div className="flex mr-5">
+              <span className="text-sm text-gray-500 mr-2">Units:</span>
+              <div className="border-gray-500 text-xs rounded-sm">
+                <button
+                  className={cn({
+                    "bg-accent text-black rounded-sm": unit === "percent",
+                    "px-2": true,
+                  })}
+                  onClick={() => setUnit("percent")}
+                >
+                  %
+                </button>
+                <button
+                  className={cn({
+                    "bg-accent text-black rounded-sm": unit === "currency",
+                    "px-2": true,
+                  })}
+                  onClick={() => setUnit("currency")}
+                >
+                  $
+                </button>
+              </div>
+            </div>
+            <div>
+              <span className="text-sm text-gray-500 mr-2">Sort by:</span>
+              <select>
+                <option>Trending</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <div>
-          <select>
-            <option>Trending</option>
-          </select>
-        </div>
+        <TradingHistoryList history={history} />
       </div>
-      <TradingHistoryList history={history} />
     </main>
   );
 }

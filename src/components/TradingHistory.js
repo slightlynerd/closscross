@@ -39,7 +39,7 @@ export default function TradingHistory() {
           />
         </svg>
       </div>
-      <div className="flex justify-between text-gray-500 mt-3">
+      <div className="flex justify-between text-gray-500 text-sm mt-3">
         <button
           className={cn({
             "bg-accent text-black rounded-sm px-2 py-1": filter === "last",
