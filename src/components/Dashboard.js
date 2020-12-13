@@ -11,7 +11,7 @@ export default function Dashboard() {
   return (
     <main className="dashboard pt-8">
       <div className="container">
-        <div className="flex justify-between">
+        <div className="flex items-center justify-between">
           <div className="flex">
             <p className="text-gray-500 text-sm mr-4">
               Select assets, types and period:
@@ -21,7 +21,7 @@ export default function Dashboard() {
             </button>
           </div>
           <div className="flex">
-            <div className="flex mr-5">
+            <div className="flex items-center mr-5">
               <span className="text-sm text-gray-500 mr-2">Units:</span>
               <div className="flex btn-outline--accent text-xs rounded-sm">
                 <button

@@ -17,3 +17,7 @@
   border: 1px solid #9AC802;
   color: #9AC802;
 }
+
+.sidebar .chart {
+  height: 150px;
+}

@@ -47,6 +47,10 @@ export default function VerChart() {
     series.dataFields.dateY = "date";
     series.tooltipText = "{value}";
     chart.logo.disabled = true;
+
+    return function cleanUp() {
+      chart.dispose();
+    };
   });
 
   return <div id={`chart-${date}`} className="chart"></div>;

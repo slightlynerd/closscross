@@ -59,7 +59,7 @@ export default function TradingHistoryList({ data }) {
           <p className="text-gray-500 text-sm">{data.outcome}</p>
         </div>
         {/* line chart */}
-        <HorChart color={data.color} />
+        <HorChart />
         {/* rotated line chart */}
         <VerChart />
         {/* total */}

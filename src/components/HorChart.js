@@ -2,15 +2,16 @@ import { useEffect } from "react";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 
-export default function HorChart(props) {
+export default function HorChart() {
   const date = Date.now();
+  console.log(date);
 
   const am4themesTradingTheme = (target) => {
     if (target instanceof am4core.ColorSet) {
       target.list = [
-        am4core.color(props.color || "#9ac802"),
-        am4core.color(props.color || "#9ac802"),
-        am4core.color(props.color || "#9ac802"),
+        am4core.color("#9ac802"),
+        am4core.color("#9ac802"),
+        am4core.color("#9ac802"),
       ];
     }
   };
@@ -51,6 +52,10 @@ export default function HorChart(props) {
     chart.cursor.snapToSeries = series;
     chart.cursor.xAxis = dateAxis;
     chart.logo.disabled = true;
+
+    return function cleanUp() {
+      chart.dispose();
+    };
   });
 
   return <div id={`chart-${date}`} className="chart"></div>;
